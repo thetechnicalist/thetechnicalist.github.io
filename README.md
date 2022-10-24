@@ -1,1 +1,0 @@
-# thetechnicalist.github.io
