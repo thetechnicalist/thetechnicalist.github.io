@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tablice</title>
+	</head>
+	<body>
+		<script>
+			/*
+			var cars = new Array("Saab", "Volvo", "BMW");
+			document.write(cars[0]+"<br>");
+			document.write(cars[1]+"<br>");
+			document.write(cars[2]+"<br>");
+			
+			var cars = ["Saab", "Volvo", "BMW"];
+			for(let i = 0; i < 3; i++)
+			{
+				document.write(cars[i]+"<br>")
+			}
+			
+			document.write(cars);
+			
+			cars.sort() - sortowanie
+			cars.reverse() - odwrócenie tablicy
+			wyraz = "słowo"
+			[...wyraz] - rozdzielenie na poszczególne litery
+			*/
+			
+			//Zadanie 1
+			function zad1()
+			{
+				var tab1 = [7, 3, 1, 6, 9, 5, 4, 10, 2, 2];
+				
+				document.write("Zawartość piątej komórki: <b>"+tab1[4]+"</b><br>");
+				tab1[6] = 12;
+				document.write("Zawartość siódmej komórki po zmianie: <b>"+tab1[6]+"</b><br>");
+				
+				var tab2 = tab1;
+				document.write("Zawartość tab2:<b> "+tab2+"</b><br>");
+				
+				var tab3 = new Array(tab1.length);
+				
+				for (let i = 0; i < tab3.length; i++)
+				{
+					tab3[i] = tab1[i] + tab2[i];
+				}
+				
+				document.write("Zawartość tab3:<b> "+tab3+"</b><br>");
+				
+				tab2 = tab1.reverse();
+				document.write("Zawartość tab2 po odwróceniu:<b> "+tab2+"</b>");
+			}
+			function zad2()
+			{
+				var tab = new Array(5);
+				
+				function sortujPoprawnie(tab) //prosty bubble sort
+				{
+					for (let i = 0; i < tab.length; i++)
+					{
+						for (let j = 0; j < (tab.length - i - 1); j++)
+						{
+							if(tab[j] > tab[j+1])
+							{
+								let temp = tab[j];
+								tab[j] = tab[j+1];
+								tab[j+1] = temp;
+							}
+						}
+					}
+					return tab;
+				}
+				
+				//podpunkt 1
+				if(confirm("Czy chcesz wprowadzić własne liczby do tablicy?\nJeżeli tak, kliknij \"OK\"\nJeżeli nie, możesz skorzystać z przygotowanej wcześniej tablicy testowej poprzez kliknięcie \"Anuluj\".\n\n(Funkcja została przygotowana w celu ułatwienia testowania zmian w programie - nie chciało mi się wpisywać tej samej tablicy 20 razy)"))
+				{
+					for (let i=0;i<tab.length;i++)
+					{
+						tab[i] = parseInt(prompt("Wprowadź liczbę nr "+(i+1)+":"));
+					};
+				} else {
+					tab = [12, 5, 42, 37, 21];
+				}
+				document.write("Tablica = <b>"+tab+"</b><br>")
+				
+				//podpunkt 2
+				var tabSort = tab;
+				sortujPoprawnie(tabSort);
+				
+				document.write("Minimalna wartość = <b>"+tabSort[0]+"</b><br>Maksymalna wartość = <b>"+tabSort[tab.length - 1]+"</b><br>");
+				
+				//podpunkt 3
+				let average = 0;
+				for (let i = 0; i < tab.length; i++)
+				{
+					average += tab[i] 
+				};
+				average = average / tab.length
+				document.write("Średnia = <b>"+average+"</b><br>");
+				
+				//podpunkt 4
+				let howMany = 0;
+				for (let i = 0; i < tab.length; i++)
+				{
+					if(tab[i] == 3) howMany++;
+				};
+				document.write("Ilość trójek = <b>"+howMany+"</b><br>");
+				
+				//podpunkt 5
+				sortujPoprawnie(tab); //składnia na początku funkcji
+				document.write("Tablica po przesortowaniu = <b>"+tab+"</b><br>")
+				
+				//podpunkt 6
+				let mediana = 0;
+				if (tab.length % 2 != 0)
+				{
+					mediana = tab[Math.floor(tab.length / 2)];
+				}
+				else
+				{
+					mediana = tab[Math.floor(tab.length / 2)] + tab[Math.floor(tab.length / 2) + 1];
+				};
+				document.write("Mediana = <b>"+mediana+"</b><br>");
+				
+				//podpunkt 7
+				document.write("Trzy najmniejsze elementy:<ul>");
+				for (let i = 0; i < 3; i++)
+				{
+					document.write("<li><b>"+tab[i]+"</b></li>");
+				};
+				document.write("</ul>");
+				document.write("Trzy największe elementy:<ul>");
+				for (let i = tab.length - 1; i > tab.length - 4; i--)
+				{
+					document.write("<li><b>"+tab[i]+"</b></li>");
+				};
+				document.write("</ul>");
+				
+				//podpunkt 8
+				for (let i = 0; i < tab.length; i++)
+				{
+					tab[i] *= tab[i];
+				}	;
+				
+				//podpunkt 9
+				var par = 0;
+				var noPar = 0;
+				
+				for (let i = 0; i < (tab.length - 1); i++)
+				{
+					if (tab[i] % 2 == 0) par++
+					else noPar++
+				};
+				
+				document.write("Ilość liczb parzystych: <b>"+par+"</b><br>");
+				document.write("Ilość liczb nieparzystych: <b>"+noPar+"</b><br>");
+				
+				//podpunkt 10
+				let divByThree = 0;
+				for (let i = 0; i < tab.length; i++)
+				{
+					if(tab[i] % 3 == 0)
+					{
+						divByThree++;
+					}
+				};
+				document.write("Ilość liczb podzielnych bez reszty przez 3: <b>"+divByThree+"</b><br>");
+			}
+			</script>
+		<h1>Tablice</h1>
+		<h2>Zadanie 1</h2>
+		<h3>Utwórz tablicę o nazwie tab1, zawierającą następujące liczby całkowite: 7, 3, 1, 6, 9, 5, 4, 10, 2, 2.</h3>
+		<ol>
+			<li>Wypisz zawartość 5 komórki tablicy na ekran. Zmień zawartość 7 komórki tablicy, wprowadzając do niej wartość 12.</li>
+			<li>Utwórz drugą tablicę o nazwie tab2, o tej samej wielkości co tab1. Przepisz zawartość tab1 do tab2.</li>
+			<li>Utwórz trzecią tablicę o nazwie tab3, o tej samej wielkości co dwie poprzednie. Zawartością komórek tablicy tab3 jest suma komórek o tych samych indeksach tablic tab1 i tab2.</li>
+			<li>Przepisz ponownie zawartość tablicy tab1 do tablicy tab2, jednak w odwrotnej kolejności.</li>
+		</ol>
+		<h3>Wyniki:</h3>
+		<script>zad1();</script>
+		<h2>Zadanie 2</h2>
+		<h3>Utwórz tablicę, a następnie:</h3>
+		<ol>
+			<li>Wypełnij tablicę wartościami podanymi przez użytkownika.</li>
+			<li>Znajdź najmniejszy i największy element w tablicy.</li>
+			<li>Oblicz średnią wartość elementów tablicy.</li>
+			<li>Wylicz ilość wystąpień cyfry 3 w tablicy.</li>
+			<li>Dowolnym sposobem posortuj elementy tablicy w porządku rosnącym.</li>
+			<li>Znajdź medianę elementów tablicy.</li>
+			<li>Wypisz 3 najmniejsze i trzy największe elementy tablicy.</li>
+			<li>Zwiększ wartość każdego elementu tablicy podnosząc go do kwadratu.</li>
+			<li>Policz ilość liczb parzystych i nieparzystych w tablicy.</li>
+			<li>Podaj ile liczb zawartych w tablicy jest podzielna bez reszty przez 3.</li>
+		</ol>
+		<h3>Wyniki:</h3>
+		<script>zad2();</script>
+		
+	</body>
+</html>
